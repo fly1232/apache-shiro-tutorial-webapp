@@ -7,11 +7,17 @@
 	   xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-	<mvc:annotation-driven />
-
 	<context:component-scan base-package="shirodemo" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
 	</context:component-scan>
+
+	<aop:config proxy-target-class="true"></aop:config>
+	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+		<property name="securityManager" ref="securityManager"/>
+	</bean>
+
+	<mvc:annotation-driven />
 
 	<!-- 根据客户端的不同的请求决定不同的view进行响应, 如 /blog/1.json -->
 	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
@@ -46,8 +52,9 @@
 		</property>
 	</bean>
 
-	<!-- 对静态资源文件的访问 -->
-	<mvc:default-servlet-handler/>
-
+	<!-- 控制器异常处理 -->
+	<bean id="exceptionHandlerExceptionResolver" class="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver">
+	</bean>
+	<!--<bean class="shirodemo.DefaultExceptionHandler"/>-->
 
 </beans>

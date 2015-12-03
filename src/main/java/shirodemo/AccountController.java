@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 @RequestMapping("/account")
-public class AcountController {
+public class AccountController {
 
     @RequiresAuthentication
     @RequestMapping("/authenticated")

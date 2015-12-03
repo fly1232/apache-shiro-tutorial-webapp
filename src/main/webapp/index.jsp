@@ -14,4 +14,7 @@
   ~ limitations under the License.
   --%>
 <%-- Default behavior is to simply show the site's home page --%>
-<jsp:forward page="home.jsp"/>
+<%
+  response.sendRedirect("home.do");
+%>
+<%--<jsp:forward page="/home/index.do"/>--%>

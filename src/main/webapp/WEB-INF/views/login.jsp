@@ -13,7 +13,8 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   --%>
-<jsp:include page="include.jsp"/>
+<jsp:include page="/WEB-INF/views/include.jsp"/>
+<%@ include file="/WEB-INF/views/base.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +36,7 @@
                         <h3 class="panel-title">Please sign in</h3>
                     </div>
                     <div class="panel-body">
-                        <form name="loginform" action="" method="POST" accept-charset="UTF-8" role="form">
+                        <form name="loginform" action="${root}/login.do" method="POST" accept-charset="UTF-8" role="form">
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Username or Email" name="username" type="text">

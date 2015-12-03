@@ -20,7 +20,8 @@
 
 [main]
 
-shiro.loginUrl = /login.jsp
+shiro.loginUrl = /login.do
+authc.successUrl = /home.do
 
 # Let's use some in-memory caching to reduce the number of runtime lookups against Stormpath.  A real
 # application might want to use a more robust caching solution (e.g. ehcache or a distributed cache).  When using such
@@ -33,18 +34,25 @@ securityManager.cacheManager = $cacheManager
 # takes 5 minutes to set up:
 stormpathClient = com.stormpath.shiro.client.ClientFactory
 stormpathClient.cacheManager = $cacheManager
-stormpathClient.apiKeyFileLocation = $HOME/.stormpath/apiKey.properties
+stormpathClient.apiKeyFileLocation = c:/home/.stormpath/apiKey.properties
 stormpathRealm = com.stormpath.shiro.realm.ApplicationRealm
 stormpathRealm.client = $stormpathClient
 # Find this URL in your Stormpath console for an application you create:
 # Applications -> (choose application name) --> Details --> REST URL
-stormpathRealm.applicationRestUrl = https://api.stormpath.com/v1/applications/$STORMPATH_APPLICATION_ID
+stormpathRealm.applicationRestUrl = https://api.stormpath.com/v1/applications/7ZAVHLnBegGdqjUJeLKQKW
 stormpathRealm.groupRoleResolver.modeNames = name
 securityManager.realm = $stormpathRealm
 
 [urls]
-/login.jsp = authc
-/logout = logout
-/account/** = authc
+# /login.jsp = authc
+# /logout = logout
+# /account/*.do = authc
 
+[users]
+xu=123,Captains,Officers
+
+[roles]
+Captains=user:create,user:update
+Enlisted=user:create,user:delete
+Officers=user:create,user:delete
 

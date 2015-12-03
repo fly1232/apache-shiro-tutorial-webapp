@@ -13,7 +13,8 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   --%>
-<jsp:include page="../include.jsp"/>
+<jsp:include page="/WEB-INF/views/include.jsp"/>
+<%@ include file="/WEB-INF/views/base.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -29,15 +30,15 @@
 </head>
 <body>
 
-    <h2>For authenticated users only!</h2>
+    <h2>For authorized users only!</h2>
 
-    <p>This page simulates a restricted part of a web application intended for authenticated users only.</p>
+    <p>This page simulates a restricted part of a web application intended for authorized users only.</p>
 
     <p>You are currently logged in.</p>
 
-    <p><a href="<c:url value="/home.jsp"/>">Return to the home page.</a></p>
+    <p><a href="<c:url value="${root}/home.do"/>">Return to the home page.</a></p>
 
-    <p><a href="<c:url value="/logout"/>">Log out.</a></p>
+    <p><a href="<c:url value="${root}/logout.do"/>">Log out.</a></p>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery.js"></script>

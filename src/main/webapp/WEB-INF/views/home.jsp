@@ -15,7 +15,8 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   --%>
-<jsp:include page="include.jsp"/>
+<jsp:include page="/WEB-INF/views/include.jsp"/>
+<%@ include file="/WEB-INF/views/base.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,24 +34,26 @@
     <h1>Apache Shiro Tutorial Webapp</h1>
 
     <p>Hi <shiro:guest>Guest</shiro:guest><shiro:user>
-        <%
-            //This should never be done in a normal page and should exist in a proper MVC controller of some sort, but for this
-            //tutorial, we'll just pull out Stormpath Account data from Shiro's PrincipalCollection to reference in the
-            //<c:out/> tag next:
+        <%--<%--%>
+            <%--//This should never be done in a normal page and should exist in a proper MVC controller of some sort, but for this--%>
+            <%--//tutorial, we'll just pull out Stormpath Account data from Shiro's PrincipalCollection to reference in the--%>
+            <%--//<c:out/> tag next:--%>
 
-            request.setAttribute("account", org.apache.shiro.SecurityUtils.getSubject().getPrincipals().oneByType(java.util.Map.class));
+            <%--request.setAttribute("account", org.apache.shiro.SecurityUtils.getSubject().getPrincipals().oneByType(java.util.Map.class));--%>
 
-        %>
+        <%--%>--%>
         <c:out value="${account.givenName}"/></shiro:user>!
-        ( <shiro:user><a href="<c:url value="/logout"/>">Log out</a></shiro:user>
-        <shiro:guest><a href="<c:url value="/login.jsp"/>">Log in</a></shiro:guest> )
+        ( <shiro:user><a href="<c:url value="${root}/logout.do"/>">Log out</a></shiro:user>
+        <shiro:guest><a href="<c:url value="${root}/login.do"/>">Log in</a></shiro:guest> )
     </p>
 
     <p>Welcome to the Apache Shiro Tutorial Webapp.  This page represents the home page of any web application.</p>
 
-    <shiro:authenticated><p>Visit your <a href="<c:url value="/account"/>">account page</a>.</p></shiro:authenticated>
-    <shiro:notAuthenticated><p>If you want to access the authenticated-only <a href="<c:url value="/account"/>">account page</a>,
+    <shiro:authenticated><p>Visit your <a href="<c:url value="${root}/account/authenticated.do"/>">account page</a>.</p></shiro:authenticated>
+    <shiro:notAuthenticated><p>If you want to access the authenticated-only <a href="<c:url value="${root}/account/authenticated.do"/>">account page</a>,
         you will need to log-in first.</p></shiro:notAuthenticated>
+
+    <p>Authorized page: <a href="<c:url value="${root}/account/authorized.do"/>">authorized page</a>.</p>
 
     <h2>Roles</h2>
 

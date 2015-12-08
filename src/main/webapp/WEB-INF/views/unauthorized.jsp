@@ -20,7 +20,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Apache Shiro Tutorial Webapp</title>
+  <title>没有权限</title>
+  <style>.error{color:red;}</style>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Add some nice styling and functionality.  We'll just use Twitter Bootstrap -->
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
@@ -31,7 +32,8 @@
 </head>
 <body>
 
-<h1>Unauthorized, you are forbidden to see this page, contact the system administrator.</h1>
+<div class="error">您没有权限[${exception}]</div>
+</body>
 
 </body>
 </html>

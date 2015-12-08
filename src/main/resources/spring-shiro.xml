@@ -38,7 +38,7 @@
         <property name="filterChainDefinitions">
             <value>
                 /home.do = anon
-                /login.do = authc
+                /login.jsp = authc
                 /logout.do = logout
                 /account/*.do = user
             </value>

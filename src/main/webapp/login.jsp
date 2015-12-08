@@ -33,10 +33,17 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Please sign in</h3>
+                        <c:choose>
+                            <c:when test="${shiroLoginFailure==null}">
+                                <h3 class="panel-title">Please sign in</h3>
+                            </c:when>
+                            <c:otherwise>
+                                <h3 class="panel-title">username or password mistake:${shiroLoginFailure}</h3>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     <div class="panel-body">
-                        <form name="loginform" action="${root}/login.do" method="POST" accept-charset="UTF-8" role="form">
+                        <form name="loginform" method="POST" accept-charset="UTF-8" role="form">
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Username or Email" name="username" type="text">

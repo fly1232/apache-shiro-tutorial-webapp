@@ -1,7 +1,6 @@
 package shirodemo;
 
 import org.apache.shiro.authz.annotation.Logical;
-import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/account")
 public class AccountController {
 
-    @RequiresAuthentication
+//    @RequiresAuthentication
     @RequestMapping("/authenticated")
     public String authenticatedIndex(HttpServletRequest request, Model model) {
 //        Subject subject = SecurityUtils.getSubject();

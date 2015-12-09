@@ -33,7 +33,7 @@
 
 <h1>Unauthenticated, so you should go to the login page</h1>
 <br>
-<a href="${root}/login.do">Log in</a>
+<a href="${root}/login.jsp">Log in</a>
 
 </body>
 </html>

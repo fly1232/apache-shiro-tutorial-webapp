@@ -40,7 +40,7 @@
                 /home.do = anon
                 /login.jsp = authc
                 /logout = logout
-                /account/*.do = user
+                /**/*.do = user
             </value>
         </property>
     </bean>

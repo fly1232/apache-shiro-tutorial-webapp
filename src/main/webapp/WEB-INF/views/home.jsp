@@ -43,8 +43,8 @@
 
         <%--%>--%>
         <c:out value="${account.givenName}"/></shiro:user>!
-        ( <shiro:user><a href="<c:url value="${root}/logout.do"/>">Log out</a></shiro:user>
-        <shiro:guest><a href="<c:url value="${root}/login.do"/>">Log in</a></shiro:guest> )
+        ( <shiro:user><a href="<c:url value="${root}/logout"/>">Log out</a></shiro:user>
+        <shiro:guest><a href="<c:url value="${root}/login.jsp"/>">Log in</a></shiro:guest> )
     </p>
 
     <p>Welcome to the Apache Shiro Tutorial Webapp.  This page represents the home page of any web application.</p>
